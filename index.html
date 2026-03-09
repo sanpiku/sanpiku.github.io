@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- CONFIGURACIÓN BÁSICA DEL DOCUMENTO -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sanpiku - Descubre historias, leyendas, mitos y anécdotas fascinantes">
+    <title>Sanpiku - Historias y Leyendas</title>
+    
+    <!-- FUENTES DE GOOGLE FONTS (Poppins para títulos, Open Sans para texto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- ICONOS DE FONT AWESOME para los iconos del menú -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- ENLACE AL ARCHIVO CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    
+    <!-- ============================================ -->
+    <!-- ENCABEZADO SUPERIOR (HEADER) -->
+    <!-- ============================================ -->
+    <header class="header">
+        <div class="header-content">
+            <!-- Logo o título principal del sitio -->
+            <h1 class="logo">
+                <i class="fas fa-book-open"></i>
+                Sanpiku - Historias y Leyendas
+            </h1>
+            
+            <!-- Botón para menú móvil (hamburguesa) -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <!-- Navegación principal -->
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+                    <li><a href="#historias" class="nav-link">Historias</a></li>
+                    <li><a href="#videos" class="nav-link">Videos</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============================================ -->
+    <!-- CONTENEDOR PRINCIPAL (SIDEBAR + CONTENIDO) -->
+    <!-- ============================================ -->
+    <div class="container">
+        
+        <!-- ======================================== -->
+        <!-- BARRA LATERAL IZQUIERDA (SIDEBAR) -->
+        <!-- ======================================== -->
+        <aside class="sidebar" id="sidebar">
+            <h2 class="sidebar-title">Categorías</h2>
+            
+            <!-- CATEGORÍA 1: MITOS -->
+            <div class="category-card">
+                <button class="category-header" data-category="mitos">
+                    <i class="fas fa-dragon"></i>
+                    <span>Mitos</span>
+                    <i class="fas fa-chevron-down arrow"></i>
+                </button>
+                <div class="category-content">
+                    <ul class="category-list">
+                        <li><a href="#mito1">Mitos griegos</a></li>
+                        <li><a href="#mito2">Mitos nórdicos</a></li>
+                        <li><a href="#mito3">Mitos aztecas</a></li>
+                        <li><a href="#mito4">Mitos mayas</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CATEGORÍA 2: LEYENDAS -->
+            <div class="category-card">
+                <button class="category-header" data-category="leyendas">
+                    <i class="fas fa-ghost"></i>
+                    <span>Leyendas</span>
+                    <i class="fas fa-chevron-down arrow"></i>
+                </button>
+                <div class="category-content">
+                    <ul class="category-list">
+                        <li><a href="#leyenda1">Leyendas urbanas</a></li>
+                        <li><a href="#leyenda2">Leyendas del bosque</a></li>
+                        <li><a href="#leyenda3">Leyendas del mar</a></li>
+                        <li><a href="#leyenda4">Leyendas locales</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CATEGORÍA 3: REFRANES -->
+            <div class="category-card">
+                <button class="category-header" data-category="refranes">
+                    <i class="fas fa-quote-left"></i>
+                    <span>Refranes</span>
+                    <i class="fas fa-chevron-down arrow"></i>
+                </button>
+                <div class="category-content">
+                    <ul class="category-list">
+                        <li><a href="#refran1">Refranes populares</a></li>
+                        <li><a href="#refran2">Dichos antiguos</a></li>
+                        <li><a href="#refran3">Sabiduría popular</a></li>
+                        <li><a href="#refran4">Proverbios</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CATEGORÍA 4: ANÉCDOTAS -->
+            <div class="category-card">
+                <button class="category-header" data-category="anecdotas">
+                    <i class="fas fa-comment-dots"></i>
+                    <span>Anécdotas</span>
+                    <i class="fas fa-chevron-down arrow"></i>
+                </button>
+                <div class="category-content">
+                    <ul class="category-list">
+                        <li><a href="#anecdota1">Anécdotas históricas</a></li>
+                        <li><a href="#anecdota2">Anécdotas curiosas</a></li>
+                        <li><a href="#anecdota3">Anécdotas divertidas</a></li>
+                        <li><a href="#anecdota4">Anécdotas inspiradoras</a></li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ======================================== -->
+        <!-- CONTENIDO PRINCIPAL (MAIN) -->
+        <!-- ======================================== -->
+        <main class="main-content" id="inicio">
+            
+            <!-- Sección de bienvenida -->
+            <section class="welcome-section">
+                <h2 class="section-title">Bienvenido a Sanpiku</h2>
+                <p class="welcome-text">
+                    Descubre un mundo de historias fascinantes, leyendas ancestrales, 
+                    mitos que han perdurado a través del tiempo y anécdotas que te 
+                    sorprenderán. Explora nuestras categorías y sumérgete en el 
+                    conocimiento y la cultura popular.
+                </p>
+            </section>
+
+            <!-- ======================================== -->
+            <!-- SECCIÓN DE HISTORIAS (Grid de tarjetas) -->
+            <!-- ======================================== -->
+            <section class="stories-section" id="historias">
+                <h2 class="section-title">Historias Destacadas</h2>
+                
+                <!-- Grid de tarjetas de historias -->
+                <div class="stories-grid">
+                    
+                    <!-- HISTORIA 1: La Llorona -->
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-icon">
+                                <i class="fas fa-ghost"></i>
+                            </div>
+                            <h3 class="story-title">La Llorona</h3>
+                            <button class="story-toggle" aria-label="Expandir historia">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="story-content">
+                            <div class="story-meta">
+                                <span class="story-category">
+                                    <i class="fas fa-tag"></i> Leyenda
+                                </span>
+                                <span class="story-date">
+                                    <i class="fas fa-calendar"></i> México
+                                </span>
+                            </div>
+                            <p class="story-text">
+                                La Llorona es una de las leyendas más conocidas de México y 
+                                toda Latinoamérica. Cuenta la historia de una mujer que, 
+                                después de perder a sus hijos, vaga por las noches llorando 
+                                y buscándolos junto a los ríos. Su llanto desgarrador "¡Ay, 
+                                mis hijos!" se escucha en las noches oscuras, advirtiendo a 
+                                quienes la oyen que se alejen de los cuerpos de agua. La 
+                                leyenda varía según la región, pero siempre mantiene el 
+                                elemento del arrepentimiento y la búsqueda eterna.
+                            </p>
+                            <div class="story-footer">
+                                <span class="story-read-time">
+                                    <i class="fas fa-clock"></i> 3 min de lectura
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HISTORIA 2: El Hilo Rojo del Destino -->
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3 class="story-title">El Hilo Rojo del Destino</h3>
+                            <button class="story-toggle" aria-label="Expandir historia">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="story-content">
+                            <div class="story-meta">
+                                <span class="story-category">
+                                    <i class="fas fa-tag"></i> Mito
+                                </span>
+                                <span class="story-date">
+                                    <i class="fas fa-calendar"></i> Japón/China
+                                </span>
+                            </div>
+                            <p class="story-text">
+                                Según la mitología asiática, los dioses atan un hilo rojo 
+                                invisible alrededor del tobillo de aquellas personas que están 
+                                destinadas a encontrarse. Este hilo puede estirarse o 
+                                contraerse, pero nunca romperse. Las personas conectadas por 
+                                este hilo están destinadas a tener una historia importante, 
+                                independientemente del tiempo, lugar o circunstancias. El hilo 
+                                puede enredarse o tensarse, pero nunca se romperá. Es una 
+                                hermosa metáfora sobre las conexiones del destino y el amor.
+                            </p>
+                            <div class="story-footer">
+                                <span class="story-read-time">
+                                    <i class="fas fa-clock"></i> 2 min de lectura
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HISTORIA 3: El Rey Midas -->
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-icon">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <h3 class="story-title">El Rey Midas y su Toque de Oro</h3>
+                            <button class="story-toggle" aria-label="Expandir historia">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="story-content">
+                            <div class="story-meta">
+                                <span class="story-category">
+                                    <i class="fas fa-tag"></i> Mito
+                                </span>
+                                <span class="story-date">
+                                    <i class="fas fa-calendar"></i> Grecia
+                                </span>
+                            </div>
+                            <p class="story-text">
+                                El Rey Midas era un monarca de Frigia que deseaba la riqueza 
+                                por encima de todo. Cuando el dios Dionisio le ofreció cumplir 
+                                un deseo, Midas pidió que todo lo que tocara se convirtiera en 
+                                oro. Al principio estaba extasiado, pero pronto descubrió el 
+                                terrible precio de su codicia: no podía comer ni beber, y cuando 
+                                abrazó a su hija, ella también se convirtió en oro. Esta historia 
+                                nos enseña que la avaricia puede destruir lo más valioso: el 
+                                amor y la vida misma.
+                            </p>
+                            <div class="story-footer">
+                                <span class="story-read-time">
+                                    <i class="fas fa-clock"></i> 3 min de lectura
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ======================================== -->
+            <!-- SECCIÓN DE VIDEOS DE YOUTUBE -->
+            <!-- ======================================== -->
+            <section class="videos-section" id="videos">
+                <h2 class="section-title">Videos Destacados</h2>
+                <p class="section-description">
+                    Explora contenido audiovisual relacionado con historias, mitos y leyendas
+                </p>
+                
+                <!-- Grid de videos -->
+                <div class="videos-grid">
+                    
+                    <!-- VIDEO 1 - Ejemplo (Reemplaza con tu propio video) -->
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <!-- IMPORTANTE: Reemplaza el src con tu video de YouTube -->
+                            <!-- Para obtener el código: YouTube → Video → Compartir → Insertar → Copiar código -->
+                            <iframe 
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                                title="Video de ejemplo" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="video-info">
+                            <h3 class="video-title">Leyendas y Mitos Antiguos</h3>
+                            <p class="video-description">
+                                Un recorrido por las historias más fascinantes de la historia
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- VIDEO 2 - Espacio para agregar más videos -->
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <!-- Agrega aquí tu segundo video -->
+                            <iframe 
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                                title="Video de ejemplo 2" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="video-info">
+                            <h3 class="video-title">Historias del Folclore Mundial</h3>
+                            <p class="video-description">
+                                Descubre las tradiciones orales de diferentes culturas
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Nota informativa sobre cómo agregar videos -->
+                <div class="info-box">
+                    <i class="fas fa-info-circle"></i>
+                    <p>
+                        <strong>¿Quieres agregar más videos?</strong> 
+                        Lee el archivo README.md en la carpeta youtu-sanpk/ para aprender 
+                        cómo agregar nuevos videos de YouTube al sitio.
+                    </p>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- ============================================ -->
+    <!-- PIE DE PÁGINA (FOOTER) -->
+    <!-- ============================================ -->
+    <footer class="footer" id="contacto">
+        <div class="footer-content">
+            
+            <!-- Columna 1: Información del proyecto -->
+            <div class="footer-column">
+                <h3 class="footer-title">
+                    <i class="fas fa-book-open"></i>
+                    Sanpiku
+                </h3>
+                <p class="footer-text">
+                    Tu fuente de historias, leyendas y mitos fascinantes. 
+                    Descubre el patrimonio cultural de la humanidad.
+                </p>
+            </div>
+
+            <!-- Columna 2: Enlaces rápidos -->
+            <div class="footer-column">
+                <h3 class="footer-title">Enlaces Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#historias">Historias</a></li>
+                    <li><a href="#videos">Videos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 3: Redes sociales -->
+            <div class="footer-column">
+                <h3 class="footer-title">Síguenos</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+                <p class="footer-text" style="margin-top: 1rem;">
+                    <i class="fas fa-envelope"></i>
+                    contacto@sanpiku.com
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Barra inferior de copyright -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 Sanpiku - Historias y Leyendas. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- ============================================ -->
+    <!-- ENLACE AL ARCHIVO JAVASCRIPT -->
+    <!-- ============================================ -->
+    <script src="js/script.js"></script>
+
+</body>
+</html>
