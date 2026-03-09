@@ -1,0 +1,722 @@
+/* ============================================
+   SANPIKU - HOJA DE ESTILOS PRINCIPAL
+   Archivo: styles.css
+   Descripción: Estilos para el sitio web de historias y leyendas
+   ============================================ */
+
+/* ============================================
+   1. IMPORTACIÓN DE FUENTES DE GOOGLE FONTS
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap');
+
+/* ============================================
+   2. VARIABLES CSS (COLORES Y VALORES)
+   Aquí definimos los colores principales del sitio
+   ============================================ */
+:root {
+  /* Colores principales - Paleta azul/gris profesional */
+  --color-primario: #2563eb;        /* Azul principal */
+  --color-primario-oscuro: #1e40af; /* Azul más oscuro */
+  --color-secundario: #64748b;      /* Gris azulado */
+  --color-acento: #0ea5e9;          /* Azul claro para acentos */
+  
+  /* Colores de fondo */
+  --color-fondo: #f8fafc;           /* Fondo general muy claro */
+  --color-fondo-tarjeta: #ffffff;   /* Fondo blanco para tarjetas */
+  --color-fondo-sidebar: #1e293b;   /* Fondo oscuro para sidebar */
+  
+  /* Colores de texto */
+  --color-texto: #1e293b;           /* Texto principal oscuro */
+  --color-texto-claro: #64748b;     /* Texto secundario gris */
+  --color-texto-blanco: #ffffff;    /* Texto blanco */
+  
+  /* Sombras para dar profundidad */
+  --sombra-suave: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --sombra-media: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --sombra-fuerte: 0 8px 24px rgba(0, 0, 0, 0.15);
+  
+  /* Bordes redondeados */
+  --radio-pequeno: 8px;
+  --radio-medio: 12px;
+  --radio-grande: 16px;
+  
+  /* Espaciado */
+  --espaciado-xs: 0.5rem;   /* 8px */
+  --espaciado-sm: 1rem;     /* 16px */
+  --espaciado-md: 1.5rem;   /* 24px */
+  --espaciado-lg: 2rem;     /* 32px */
+  --espaciado-xl: 3rem;     /* 48px */
+  
+  /* Transiciones suaves */
+  --transicion: all 0.3s ease;
+}
+
+/* ============================================
+   3. RESET Y ESTILOS BASE
+   Resetea los estilos del navegador para consistencia
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.6;
+  overflow-x: hidden; /* Evita scroll horizontal */
+}
+
+/* Títulos con fuente Poppins */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-texto);
+}
+
+/* Enlaces sin subrayado por defecto */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transicion);
+}
+
+/* Imágenes responsivas */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================
+   4. LAYOUT PRINCIPAL (GRID)
+   Estructura: Header + (Sidebar + Main) + Footer
+   ============================================ */
+.container {
+  display: grid;
+  grid-template-columns: 280px 1fr; /* Sidebar fijo + contenido flexible */
+  grid-template-rows: auto 1fr auto; /* Header + contenido + footer */
+  min-height: 100vh; /* Altura mínima de toda la ventana */
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+}
+
+/* ============================================
+   5. HEADER (ENCABEZADO SUPERIOR)
+   ============================================ */
+.header {
+  grid-area: header;
+  background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-primario-oscuro) 100%);
+  color: var(--color-texto-blanco);
+  padding: var(--espaciado-md) var(--espaciado-lg);
+  box-shadow: var(--sombra-media);
+  position: sticky; /* Se mantiene visible al hacer scroll */
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-texto-blanco);
+  display: flex;
+  align-items: center;
+  gap: var(--espaciado-sm);
+}
+
+/* Icono del header */
+.header h1::before {
+  content: "📖";
+  font-size: 2rem;
+}
+
+/* Botón del menú móvil (hamburguesa) */
+.menu-toggle {
+  display: none; /* Oculto en desktop */
+  background: transparent;
+  border: 2px solid var(--color-texto-blanco);
+  color: var(--color-texto-blanco);
+  font-size: 1.5rem;
+  padding: var(--espaciado-xs) var(--espaciado-sm);
+  cursor: pointer;
+  border-radius: var(--radio-pequeno);
+  transition: var(--transicion);
+}
+
+.menu-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   6. SIDEBAR (BARRA LATERAL IZQUIERDA)
+   ============================================ */
+.sidebar {
+  grid-area: sidebar;
+  background-color: var(--color-fondo-sidebar);
+  padding: var(--espaciado-md);
+  overflow-y: auto; /* Scroll si el contenido es largo */
+  box-shadow: var(--sombra-media);
+}
+
+.sidebar h2 {
+  color: var(--color-texto-blanco);
+  font-size: 1.3rem;
+  margin-bottom: var(--espaciado-md);
+  padding-bottom: var(--espaciado-sm);
+  border-bottom: 2px solid var(--color-acento);
+}
+
+/* ============================================
+   7. CATEGORÍAS EN EL SIDEBAR
+   ============================================ */
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaciado-sm);
+}
+
+/* Cada tarjeta de categoría */
+.category-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radio-medio);
+  overflow: hidden;
+  transition: var(--transicion);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.category-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(5px); /* Efecto de desplazamiento */
+}
+
+/* Cabecera de cada categoría (donde se hace clic) */
+.category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--espaciado-sm);
+  cursor: pointer;
+  color: var(--color-texto-blanco);
+  user-select: none; /* No permite seleccionar el texto */
+}
+
+.category-title {
+  display: flex;
+  align-items: center;
+  gap: var(--espaciado-xs);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* Icono que indica si está expandido */
+.category-icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+/* Cuando la categoría está activa, rotamos el icono */
+.category-card.active .category-icon {
+  transform: rotate(180deg);
+}
+
+/* Contenido expandible de la categoría */
+.category-content {
+  max-height: 0; /* Oculto por defecto */
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+/* Cuando está activa, mostramos el contenido */
+.category-card.active .category-content {
+  max-height: 500px; /* Altura máxima cuando está expandido */
+}
+
+/* Lista de subcategorías */
+.category-content ul {
+  list-style: none;
+  padding: 0 var(--espaciado-sm) var(--espaciado-sm);
+}
+
+.category-content li {
+  padding: var(--espaciado-xs) var(--espaciado-sm);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  border-radius: var(--radio-pequeno);
+  transition: var(--transicion);
+  font-size: 0.9rem;
+}
+
+.category-content li:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-acento);
+  padding-left: var(--espaciado-md);
+}
+
+/* ============================================
+   8. CONTENIDO PRINCIPAL (MAIN)
+   ============================================ */
+.main {
+  grid-area: main;
+  padding: var(--espaciado-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Sección de introducción */
+.intro-section {
+  background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-acento) 100%);
+  color: var(--color-texto-blanco);
+  padding: var(--espaciado-xl);
+  border-radius: var(--radio-grande);
+  margin-bottom: var(--espaciado-lg);
+  box-shadow: var(--sombra-fuerte);
+  text-align: center;
+}
+
+.intro-section h2 {
+  color: var(--color-texto-blanco);
+  font-size: 2rem;
+  margin-bottom: var(--espaciado-sm);
+}
+
+.intro-section p {
+  font-size: 1.1rem;
+  opacity: 0.95;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Títulos de sección */
+.section-title {
+  font-size: 1.8rem;
+  color: var(--color-primario);
+  margin-bottom: var(--espaciado-md);
+  padding-bottom: var(--espaciado-sm);
+  border-bottom: 3px solid var(--color-acento);
+  display: flex;
+  align-items: center;
+  gap: var(--espaciado-sm);
+}
+
+/* ============================================
+   9. GRID DE HISTORIAS (TARJETAS)
+   ============================================ */
+.stories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--espaciado-md);
+  margin-bottom: var(--espaciado-xl);
+}
+
+/* Cada tarjeta de historia */
+.story-card {
+  background: var(--color-fondo-tarjeta);
+  border-radius: var(--radio-medio);
+  overflow: hidden;
+  box-shadow: var(--sombra-suave);
+  transition: var(--transicion);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.story-card:hover {
+  box-shadow: var(--sombra-fuerte);
+  transform: translateY(-5px); /* Efecto de elevación */
+}
+
+/* Cabecera de la tarjeta de historia */
+.story-header {
+  background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-primario-oscuro) 100%);
+  color: var(--color-texto-blanco);
+  padding: var(--espaciado-md);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+
+.story-header h3 {
+  color: var(--color-texto-blanco);
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+/* Icono de expandir/contraer */
+.expand-icon {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+/* Cuando la tarjeta está activa, rotamos el icono */
+.story-card.active .expand-icon {
+  transform: rotate(180deg);
+}
+
+/* Contenido de la historia (expandible) */
+.story-content {
+  max-height: 0; /* Oculto por defecto */
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+/* Cuando está activa, mostramos el contenido */
+.story-card.active .story-content {
+  max-height: 800px;
+}
+
+/* Cuerpo del contenido */
+.story-body {
+  padding: var(--espaciado-md);
+}
+
+/* Etiqueta de categoría */
+.story-category {
+  display: inline-block;
+  background: var(--color-acento);
+  color: var(--color-texto-blanco);
+  padding: var(--espaciado-xs) var(--espaciado-sm);
+  border-radius: var(--radio-pequeno);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: var(--espaciado-sm);
+}
+
+.story-body p {
+  color: var(--color-texto-claro);
+  line-height: 1.8;
+  margin-bottom: var(--espaciado-sm);
+}
+
+/* Autor y fecha */
+.story-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--espaciado-sm);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+  color: var(--color-texto-claro);
+}
+
+/* ============================================
+   10. SECCIÓN DE VIDEOS DE YOUTUBE
+   ============================================ */
+.videos-section {
+  margin-top: var(--espaciado-xl);
+}
+
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--espaciado-lg);
+}
+
+/* Contenedor de cada video */
+.video-card {
+  background: var(--color-fondo-tarjeta);
+  border-radius: var(--radio-medio);
+  overflow: hidden;
+  box-shadow: var(--sombra-suave);
+  transition: var(--transicion);
+}
+
+.video-card:hover {
+  box-shadow: var(--sombra-fuerte);
+  transform: translateY(-5px);
+}
+
+/* Contenedor responsive para iframe de YouTube */
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* Ratio 16:9 */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Información del video */
+.video-info {
+  padding: var(--espaciado-md);
+}
+
+.video-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: var(--espaciado-xs);
+  color: var(--color-primario);
+}
+
+.video-info p {
+  color: var(--color-texto-claro);
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   11. FOOTER (PIE DE PÁGINA)
+   ============================================ */
+.footer {
+  grid-area: footer;
+  background: var(--color-fondo-sidebar);
+  color: var(--color-texto-blanco);
+  padding: var(--espaciado-xl) var(--espaciado-lg);
+  margin-top: var(--espaciado-xl);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--espaciado-lg);
+}
+
+.footer-section h3 {
+  color: var(--color-texto-blanco);
+  font-size: 1.2rem;
+  margin-bottom: var(--espaciado-sm);
+  border-bottom: 2px solid var(--color-acento);
+  padding-bottom: var(--espaciado-xs);
+}
+
+.footer-section p {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+}
+
+/* Redes sociales */
+.social-links {
+  display: flex;
+  gap: var(--espaciado-sm);
+  margin-top: var(--espaciado-sm);
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: var(--color-texto-blanco);
+  font-size: 1.3rem;
+  transition: var(--transicion);
+}
+
+.social-link:hover {
+  background: var(--color-acento);
+  transform: translateY(-3px);
+}
+
+/* Copyright */
+.footer-bottom {
+  text-align: center;
+  margin-top: var(--espaciado-lg);
+  padding-top: var(--espaciado-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   12. RESPONSIVE DESIGN (MOBILE-FIRST)
+   Adaptaciones para diferentes tamaños de pantalla
+   ============================================ */
+
+/* Tablets y pantallas medianas (menor a 1024px) */
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 250px 1fr; /* Sidebar más estrecho */
+  }
+  
+  .header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .main {
+    padding: var(--espaciado-md);
+  }
+}
+
+/* Tablets pequeñas (menor a 768px) */
+@media (max-width: 768px) {
+  /* Cambiamos el layout a una columna */
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+  }
+  
+  /* Mostramos el botón del menú */
+  .menu-toggle {
+    display: block;
+  }
+  
+  /* Sidebar se convierte en menú móvil */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Oculto fuera de la pantalla */
+    width: 280px;
+    height: 100vh;
+    z-index: 200;
+    transition: left 0.3s ease;
+    padding-top: var(--espaciado-xl);
+  }
+  
+  /* Cuando está activo, se muestra */
+  .sidebar.active {
+    left: 0;
+  }
+  
+  /* Overlay oscuro detrás del sidebar */
+  .sidebar.active::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 280px;
+    width: calc(100vw - 280px);
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .stories-grid {
+    grid-template-columns: 1fr; /* Una sola columna */
+  }
+  
+  .intro-section {
+    padding: var(--espaciado-lg);
+  }
+  
+  .intro-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Móviles (menor a 480px) */
+@media (max-width: 480px) {
+  .header {
+    padding: var(--espaciado-sm) var(--espaciado-md);
+  }
+  
+  .header h1 {
+    font-size: 1.2rem;
+  }
+  
+  .main {
+    padding: var(--espaciado-sm);
+  }
+  
+  .intro-section {
+    padding: var(--espaciado-md);
+  }
+  
+  .intro-section h2 {
+    font-size: 1.3rem;
+  }
+  
+  .intro-section p {
+    font-size: 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.4rem;
+  }
+  
+  .story-header h3 {
+    font-size: 1rem;
+  }
+  
+  .videos-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .sidebar {
+    width: 100%; /* Sidebar ocupa toda la pantalla en móvil pequeño */
+  }
+}
+
+/* ============================================
+   13. UTILIDADES Y ANIMACIONES
+   ============================================ */
+
+/* Animación de fade in (aparición suave) */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Aplicar animación a las tarjetas */
+.story-card, .video-card {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Scroll suave para toda la página */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar personalizado (Webkit browsers) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-fondo);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-secundario);
+  border-radius: var(--radio-pequeno);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primario);
+}
+
+/* Clase para ocultar elementos */
+.hidden {
+  display: none;
+}
+
+/* Clase para centrar texto */
+.text-center {
+  text-align: center;
+}
+
+/* ============================================
+   FIN DE LOS ESTILOS
+   ============================================ */
