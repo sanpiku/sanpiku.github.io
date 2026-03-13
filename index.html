@@ -1,409 +1,1370 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- CONFIGURACIÓN BÁSICA DEL DOCUMENTO -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sanpiku - Descubre historias, leyendas, mitos y anécdotas fascinantes">
-    <title>Sanpiku - Historias y Leyendas</title>
+    <meta name="description" content="SANPIKU - Descubre mitos, leyendas y fábulas de todo internet. Un portal de entretenimiento y divulgación cultural.">
+    <title>SANPIKU - Mitos, Leyendas y Fábulas del Mundo</title>
     
-    <!-- FUENTES DE GOOGLE FONTS (Poppins para títulos, Open Sans para texto) -->
+    <!-- Fuentes de Google Fonts para tipografía elegante -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     
-    <!-- ICONOS DE FONT AWESOME para los iconos del menú -->
+    <!-- Font Awesome para iconos de aventura y exploración -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- ENLACE AL ARCHIVO CSS -->
-    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* ============================================
+           ESTILOS GENERALES Y RESET
+           Configuración básica para todo el sitio
+        ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            /* PALETA DE COLORES AVENTURA Y EXPLORACIÓN */
+            /* Verdes selva y esmeralda */
+            --verde-oscuro: #2d5016;
+            --verde-medio: #3a7d44;
+            --verde-claro: #5cb85c;
+            
+            /* Naranjas aventura y atardecer */
+            --naranja-intenso: #ff6b35;
+            --naranja-medio: #f7931e;
+            --naranja-claro: #ff8c42;
+            
+            /* Azules océano profundo */
+            --azul-oscuro: #1e3a5f;
+            --azul-medio: #2563eb;
+            --azul-claro: #4a90e2;
+            
+            /* Dorados y ámbar tierra */
+            --dorado: #daa520;
+            --ambar: #f4a460;
+            
+            /* Colores neutros */
+            --blanco: #ffffff;
+            --gris-claro: #f8f9fa;
+            --gris-medio: #6c757d;
+            --negro: #1a1a1a;
+            
+            /* Tipografía */
+            --font-titulos: 'Cinzel', serif;
+            --font-display: 'Playfair Display', serif;
+            --font-texto: 'Montserrat', sans-serif;
+            
+            /* Sombras para profundidad */
+            --sombra-suave: 0 2px 10px rgba(0,0,0,0.1);
+            --sombra-media: 0 5px 20px rgba(0,0,0,0.15);
+            --sombra-fuerte: 0 10px 40px rgba(0,0,0,0.2);
+            
+            /* Transiciones suaves */
+            --transicion: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        body {
+            font-family: var(--font-texto);
+            line-height: 1.6;
+            color: var(--negro);
+            background-color: var(--gris-claro);
+            overflow-x: hidden;
+        }
+        
+        /* ============================================
+           NAVEGACIÓN SUPERIOR
+           Barra de navegación fija con logo
+        ============================================ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--azul-oscuro) 100%);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: var(--sombra-media);
+            transition: var(--transicion);
+        }
+        
+        .navbar.scrolled {
+            padding: 0.5rem 2rem;
+            box-shadow: var(--sombra-fuerte);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo-img {
+            height: 50px;
+            width: auto;
+            transition: var(--transicion);
+        }
+        
+        .navbar.scrolled .logo-img {
+            height: 40px;
+        }
+        
+        .logo-text {
+            font-family: var(--font-titulos);
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--blanco);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 2px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transicion);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        /* Efecto de subrayado animado en los enlaces */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--naranja-intenso), var(--dorado));
+            transition: var(--transicion);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--naranja-claro);
+            transform: translateY(-2px);
+        }
+        
+        /* Botón de menú móvil (hamburguesa) */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--blanco);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transicion);
+        }
+        
+        .menu-toggle:hover {
+            color: var(--naranja-claro);
+            transform: scale(1.1);
+        }
+        
+        /* ============================================
+           SECCIÓN HERO (PORTADA)
+           Sección principal con título impactante
+        ============================================ */
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            /* Gradiente dinámico de aventura */
+            background: linear-gradient(135deg, 
+                var(--verde-oscuro) 0%, 
+                var(--verde-medio) 25%,
+                var(--azul-oscuro) 50%,
+                var(--azul-medio) 75%,
+                var(--naranja-medio) 100%
+            );
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        /* Animación de movimiento del gradiente */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Patrón decorativo de fondo */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(218, 165, 32, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(92, 184, 92, 0.05) 0%, transparent 50%);
+            opacity: 0.6;
+        }
+        
+        /* Iconos decorativos flotantes */
+        .hero-icon {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+            color: var(--blanco);
+        }
+        
+        .hero-icon:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .hero-icon:nth-child(2) { top: 20%; right: 15%; animation-delay: 1s; }
+        .hero-icon:nth-child(3) { bottom: 15%; left: 20%; animation-delay: 2s; }
+        .hero-icon:nth-child(4) { bottom: 25%; right: 10%; animation-delay: 3s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        .hero-content {
+            text-align: center;
+            color: var(--blanco);
+            z-index: 10;
+            padding: 2rem;
+            max-width: 1000px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+            letter-spacing: 3px;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-family: var(--font-titulos);
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            color: var(--naranja-claro);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-weight: 300;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--naranja-intenso), var(--dorado));
+            color: var(--blanco);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: var(--transicion);
+            box-shadow: var(--sombra-media);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Efecto de brillo al pasar el mouse */
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: var(--transicion);
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--sombra-fuerte);
+        }
+        
+        /* Indicador de scroll hacia abajo */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--blanco);
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            z-index: 10;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+        
+        /* ============================================
+           SECCIONES DE CONTENIDO PRINCIPAL
+           Contenedor general para las secciones
+        ============================================ */
+        .main-content {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .section-title {
+            font-family: var(--font-titulos);
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--verde-oscuro);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* Línea decorativa debajo del título */
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--naranja-intenso), var(--dorado));
+            border-radius: 2px;
+        }
+        
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--gris-medio);
+            max-width: 700px;
+            margin: 0 auto;
+            margin-top: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        /* ============================================
+           TARJETAS (CARDS) DE CONTENIDO
+           Cards modernos con efectos hover 3D
+        ============================================ */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .card {
+            background: var(--blanco);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--sombra-suave);
+            transition: var(--transicion);
+            position: relative;
+            cursor: pointer;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        /* Efecto hover 3D en las tarjetas */
+        .card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: var(--sombra-fuerte);
+        }
+        
+        /* Barra de color superior en cada card */
+        .card-header {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Gradientes específicos para cada sección */
+        .card-mitos .card-header {
+            background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-medio));
+        }
+        
+        .card-leyendas .card-header {
+            background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-claro));
+        }
+        
+        .card-fabulas .card-header {
+            background: linear-gradient(135deg, var(--naranja-intenso), var(--dorado));
+        }
+        
+        /* Patrón decorativo en el header */
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(255,255,255,0.05) 0%, transparent 50%);
+        }
+        
+        .card-icon {
+            font-size: 5rem;
+            color: var(--blanco);
+            z-index: 5;
+            transition: var(--transicion);
+        }
+        
+        .card:hover .card-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+        
+        .card-body {
+            padding: 2rem;
+        }
+        
+        .card-title {
+            font-family: var(--font-titulos);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--negro);
+        }
+        
+        .card-text {
+            font-size: 1rem;
+            color: var(--gris-medio);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--naranja-intenso);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transicion);
+        }
+        
+        .card-link:hover {
+            gap: 1rem;
+            color: var(--naranja-medio);
+        }
+        
+        /* ============================================
+           SECCIÓN DE CARACTERÍSTICAS
+           Beneficios del sitio
+        ============================================ */
+        .features-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--gris-claro) 0%, var(--blanco) 100%);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            margin-top: 3rem;
+        }
+        
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--blanco);
+            border-radius: 15px;
+            box-shadow: var(--sombra-suave);
+            transition: var(--transicion);
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--sombra-media);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--naranja-intenso), var(--dorado));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .feature-title {
+            font-family: var(--font-titulos);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--verde-oscuro);
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-text {
+            font-size: 0.95rem;
+            color: var(--gris-medio);
+            line-height: 1.6;
+        }
+        
+        /* ============================================
+           FOOTER (PIE DE PÁGINA)
+           Información de contacto y enlaces
+        ============================================ */
+        .footer {
+            background: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--azul-oscuro) 100%);
+            color: var(--blanco);
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-section h3 {
+            font-family: var(--font-titulos);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--naranja-claro);
+        }
+        
+        .footer-section p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--blanco);
+            text-decoration: none;
+            transition: var(--transicion);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.9;
+        }
+        
+        .footer-links a:hover {
+            color: var(--naranja-claro);
+            opacity: 1;
+            padding-left: 0.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blanco);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: var(--transicion);
+        }
+        
+        .social-icon:hover {
+            background: linear-gradient(135deg, var(--naranja-intenso), var(--dorado));
+            transform: translateY(-5px) rotate(5deg);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 2rem;
+            text-align: center;
+            opacity: 0.8;
+        }
+        
+        /* ============================================
+           DISEÑO RESPONSIVE PARA MÓVILES
+           Adaptación para pantallas pequeñas
+        ============================================ */
+        @media (max-width: 768px) {
+            /* Navegación móvil */
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                flex-direction: column;
+                background: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--azul-oscuro) 100%);
+                width: 100%;
+                padding: 2rem;
+                gap: 1rem;
+                transition: var(--transicion);
+                box-shadow: var(--sombra-media);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            /* Hero responsive */
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+            }
+            
+            .logo-text {
+                font-size: 1.3rem;
+            }
+            
+            .logo-img {
+                height: 40px;
+            }
+            
+            /* Secciones responsive */
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .cards-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .main-content {
+                padding: 3rem 1rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        
+        /* Tablets */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .cards-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* ============================================
+           ANIMACIONES DE SCROLL
+           Elementos que aparecen al hacer scroll
+        ============================================ */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* ============================================
+           UTILIDADES
+           Clases auxiliares
+        ============================================ */
+        .text-gradient {
+            background: linear-gradient(135deg, var(--naranja-intenso), var(--dorado));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+    </style>
 </head>
 <body>
     
-    <!-- ============================================ -->
-    <!-- ENCABEZADO SUPERIOR (HEADER) -->
-    <!-- ============================================ -->
-    <header class="header">
-        <div class="header-content">
-            <!-- Logo o título principal del sitio -->
-            <h1 class="logo">
-                <i class="fas fa-book-open"></i>
-                Sanpiku - Historias y Leyendas
-            </h1>
-            
-            <!-- Botón para menú móvil (hamburguesa) -->
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <!-- Navegación principal -->
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li><a href="#inicio" class="nav-link active">Inicio</a></li>
-                    <li><a href="#historias" class="nav-link">Historias</a></li>
-                    <li><a href="#videos" class="nav-link">Videos</a></li>
-                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
-                </ul>
-            </nav>
+    <!-- ============================================
+         BARRA DE NAVEGACIÓN
+         Menú principal fijo en la parte superior
+    ============================================ -->
+    <nav class="navbar">
+        <!-- Logo y nombre del sitio -->
+        <div class="logo-container">
+            <img src="https://statics.fellou.ai/user-contents/SelloPK-1773222436923.png" alt="Logo SANPIKU" class="logo-img">
+            <span class="logo-text">SANPIKU</span>
         </div>
-    </header>
-
-    <!-- ============================================ -->
-    <!-- CONTENEDOR PRINCIPAL (SIDEBAR + CONTENIDO) -->
-    <!-- ============================================ -->
-    <div class="container">
         
-        <!-- ======================================== -->
-        <!-- BARRA LATERAL IZQUIERDA (SIDEBAR) -->
-        <!-- ======================================== -->
-        <aside class="sidebar" id="sidebar">
-            <h2 class="sidebar-title">Categorías</h2>
+        <!-- Enlaces de navegación -->
+        <ul class="nav-links">
+            <li><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="#mitos"><i class="fas fa-dragon"></i> Mitos</a></li>
+            <li><a href="#leyendas"><i class="fas fa-tree"></i> Leyendas</a></li>
+            <li><a href="#fabulas"><i class="fas fa-feather"></i> Fábulas</a></li>
+            <li><a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a></li>
+        </ul>
+        
+        <!-- Botón de menú para móviles -->
+        <button class="menu-toggle" aria-label="Abrir menú">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+    
+    <!-- ============================================
+         SECCIÓN HERO (PORTADA PRINCIPAL)
+         Primera impresión con título impactante
+    ============================================ -->
+    <section class="hero" id="inicio">
+        <!-- Iconos decorativos flotantes -->
+        <i class="fas fa-compass hero-icon"></i>
+        <i class="fas fa-map hero-icon"></i>
+        <i class="fas fa-scroll hero-icon"></i>
+        <i class="fas fa-book-open hero-icon"></i>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">SANPIKU</h1>
+            <p class="hero-subtitle">Portal de Aventuras Narrativas</p>
+            <p class="hero-description">
+                Embárcate en un viaje fascinante a través de mitos ancestrales, leyendas misteriosas y fábulas atemporales. Descubre historias de todo internet que han cautivado a la humanidad durante siglos.
+            </p>
+            <a href="#mitos" class="cta-button">
+                <i class="fas fa-compass"></i> Comenzar Exploración
+            </a>
+        </div>
+        
+        <!-- Indicador de scroll -->
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         SECCIÓN DE MITOS
+         Tarjetas con contenido sobre mitos
+    ============================================ -->
+    <section class="main-content" id="mitos">
+        <div class="section-header fade-in">
+            <h2 class="section-title"><i class="fas fa-dragon"></i> Mitos</h2>
+            <p class="section-description">
+                Explora las narrativas sagradas y cosmogónicas que han dado forma a civilizaciones enteras. Los mitos revelan verdades profundas sobre el origen del mundo y la naturaleza humana.
+            </p>
+        </div>
+        
+        <div class="cards-container">
+            <!-- Tarjeta 1: Mitología Griega -->
+            <article class="card card-mitos fade-in">
+                <div class="card-header">
+                    <i class="fas fa-bolt card-icon"></i>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Mitología Griega</h3>
+                    <p class="card-text">
+                        Descubre las historias épicas de Zeus, Hera, Poseidón y los dioses del Olimpo. Aventuras heroicas, batallas titánicas y lecciones eternas sobre el destino humano.
+                    </p>
+                    <a href="#" class="card-link">
+                        Explorar mitos <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
             
-            <!-- CATEGORÍA 1: MITOS -->
-            <div class="category-card">
-                <button class="category-header" data-category="mitos">
-                    <i class="fas fa-dragon"></i>
-                    <span>Mitos</span>
-                    <i class="fas fa-chevron-down arrow"></i>
-                </button>
-                <div class="category-content">
-                    <ul class="category-list">
-                        <li><a href="#mito1">Mitos griegos</a></li>
-                        <li><a href="#mito2">Mitos nórdicos</a></li>
-                        <li><a href="#mito3">Mitos aztecas</a></li>
-                        <li><a href="#mito4">Mitos mayas</a></li>
-                    </ul>
+            <!-- Tarjeta 2: Mitología Nórdica -->
+            <article class="card card-mitos fade-in">
+                <div class="card-header">
+                    <i class="fas fa-hammer card-icon"></i>
                 </div>
-            </div>
-
-            <!-- CATEGORÍA 2: LEYENDAS -->
-            <div class="category-card">
-                <button class="category-header" data-category="leyendas">
-                    <i class="fas fa-ghost"></i>
-                    <span>Leyendas</span>
-                    <i class="fas fa-chevron-down arrow"></i>
-                </button>
-                <div class="category-content">
-                    <ul class="category-list">
-                        <li><a href="#leyenda1">Leyendas urbanas</a></li>
-                        <li><a href="#leyenda2">Leyendas del bosque</a></li>
-                        <li><a href="#leyenda3">Leyendas del mar</a></li>
-                        <li><a href="#leyenda4">Leyendas locales</a></li>
-                    </ul>
+                <div class="card-body">
+                    <h3 class="card-title">Mitología Nórdica</h3>
+                    <p class="card-text">
+                        Viaja a Asgard y conoce a Odín, Thor y Loki. Descubre el Ragnarök, Valhalla y las sagas vikingas que han inspirado la cultura moderna.
+                    </p>
+                    <a href="#" class="card-link">
+                        Explorar mitos <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-            </div>
-
-            <!-- CATEGORÍA 3: REFRANES -->
-            <div class="category-card">
-                <button class="category-header" data-category="refranes">
-                    <i class="fas fa-quote-left"></i>
-                    <span>Refranes</span>
-                    <i class="fas fa-chevron-down arrow"></i>
-                </button>
-                <div class="category-content">
-                    <ul class="category-list">
-                        <li><a href="#refran1">Refranes populares</a></li>
-                        <li><a href="#refran2">Dichos antiguos</a></li>
-                        <li><a href="#refran3">Sabiduría popular</a></li>
-                        <li><a href="#refran4">Proverbios</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- CATEGORÍA 4: ANÉCDOTAS -->
-            <div class="category-card">
-                <button class="category-header" data-category="anecdotas">
-                    <i class="fas fa-comment-dots"></i>
-                    <span>Anécdotas</span>
-                    <i class="fas fa-chevron-down arrow"></i>
-                </button>
-                <div class="category-content">
-                    <ul class="category-list">
-                        <li><a href="#anecdota1">Anécdotas históricas</a></li>
-                        <li><a href="#anecdota2">Anécdotas curiosas</a></li>
-                        <li><a href="#anecdota3">Anécdotas divertidas</a></li>
-                        <li><a href="#anecdota4">Anécdotas inspiradoras</a></li>
-                    </ul>
-                </div>
-            </div>
-        </aside>
-
-        <!-- ======================================== -->
-        <!-- CONTENIDO PRINCIPAL (MAIN) -->
-        <!-- ======================================== -->
-        <main class="main-content" id="inicio">
+            </article>
             
-            <!-- Sección de bienvenida -->
-            <section class="welcome-section">
-                <h2 class="section-title">Bienvenido a Sanpiku</h2>
-                <p class="welcome-text">
-                    Descubre un mundo de historias fascinantes, leyendas ancestrales, 
-                    mitos que han perdurado a través del tiempo y anécdotas que te 
-                    sorprenderán. Explora nuestras categorías y sumérgete en el 
-                    conocimiento y la cultura popular.
-                </p>
-            </section>
-
-            <!-- ======================================== -->
-            <!-- SECCIÓN DE HISTORIAS (Grid de tarjetas) -->
-            <!-- ======================================== -->
-            <section class="stories-section" id="historias">
-                <h2 class="section-title">Historias Destacadas</h2>
-                
-                <!-- Grid de tarjetas de historias -->
-                <div class="stories-grid">
-                    
-                    <!-- HISTORIA 1: La Llorona -->
-                    <div class="story-card">
-                        <div class="story-header">
-                            <div class="story-icon">
-                                <i class="fas fa-ghost"></i>
-                            </div>
-                            <h3 class="story-title">La Llorona</h3>
-                            <button class="story-toggle" aria-label="Expandir historia">
-                                <i class="fas fa-chevron-down"></i>
-                            </button>
-                        </div>
-                        <div class="story-content">
-                            <div class="story-meta">
-                                <span class="story-category">
-                                    <i class="fas fa-tag"></i> Leyenda
-                                </span>
-                                <span class="story-date">
-                                    <i class="fas fa-calendar"></i> México
-                                </span>
-                            </div>
-                            <p class="story-text">
-                                La Llorona es una de las leyendas más conocidas de México y 
-                                toda Latinoamérica. Cuenta la historia de una mujer que, 
-                                después de perder a sus hijos, vaga por las noches llorando 
-                                y buscándolos junto a los ríos. Su llanto desgarrador "¡Ay, 
-                                mis hijos!" se escucha en las noches oscuras, advirtiendo a 
-                                quienes la oyen que se alejen de los cuerpos de agua. La 
-                                leyenda varía según la región, pero siempre mantiene el 
-                                elemento del arrepentimiento y la búsqueda eterna.
-                            </p>
-                            <div class="story-footer">
-                                <span class="story-read-time">
-                                    <i class="fas fa-clock"></i> 3 min de lectura
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- HISTORIA 2: El Hilo Rojo del Destino -->
-                    <div class="story-card">
-                        <div class="story-header">
-                            <div class="story-icon">
-                                <i class="fas fa-heart"></i>
-                            </div>
-                            <h3 class="story-title">El Hilo Rojo del Destino</h3>
-                            <button class="story-toggle" aria-label="Expandir historia">
-                                <i class="fas fa-chevron-down"></i>
-                            </button>
-                        </div>
-                        <div class="story-content">
-                            <div class="story-meta">
-                                <span class="story-category">
-                                    <i class="fas fa-tag"></i> Mito
-                                </span>
-                                <span class="story-date">
-                                    <i class="fas fa-calendar"></i> Japón/China
-                                </span>
-                            </div>
-                            <p class="story-text">
-                                Según la mitología asiática, los dioses atan un hilo rojo 
-                                invisible alrededor del tobillo de aquellas personas que están 
-                                destinadas a encontrarse. Este hilo puede estirarse o 
-                                contraerse, pero nunca romperse. Las personas conectadas por 
-                                este hilo están destinadas a tener una historia importante, 
-                                independientemente del tiempo, lugar o circunstancias. El hilo 
-                                puede enredarse o tensarse, pero nunca se romperá. Es una 
-                                hermosa metáfora sobre las conexiones del destino y el amor.
-                            </p>
-                            <div class="story-footer">
-                                <span class="story-read-time">
-                                    <i class="fas fa-clock"></i> 2 min de lectura
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- HISTORIA 3: El Rey Midas -->
-                    <div class="story-card">
-                        <div class="story-header">
-                            <div class="story-icon">
-                                <i class="fas fa-crown"></i>
-                            </div>
-                            <h3 class="story-title">El Rey Midas y su Toque de Oro</h3>
-                            <button class="story-toggle" aria-label="Expandir historia">
-                                <i class="fas fa-chevron-down"></i>
-                            </button>
-                        </div>
-                        <div class="story-content">
-                            <div class="story-meta">
-                                <span class="story-category">
-                                    <i class="fas fa-tag"></i> Mito
-                                </span>
-                                <span class="story-date">
-                                    <i class="fas fa-calendar"></i> Grecia
-                                </span>
-                            </div>
-                            <p class="story-text">
-                                El Rey Midas era un monarca de Frigia que deseaba la riqueza 
-                                por encima de todo. Cuando el dios Dionisio le ofreció cumplir 
-                                un deseo, Midas pidió que todo lo que tocara se convirtiera en 
-                                oro. Al principio estaba extasiado, pero pronto descubrió el 
-                                terrible precio de su codicia: no podía comer ni beber, y cuando 
-                                abrazó a su hija, ella también se convirtió en oro. Esta historia 
-                                nos enseña que la avaricia puede destruir lo más valioso: el 
-                                amor y la vida misma.
-                            </p>
-                            <div class="story-footer">
-                                <span class="story-read-time">
-                                    <i class="fas fa-clock"></i> 3 min de lectura
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
+            <!-- Tarjeta 3: Mitología Azteca -->
+            <article class="card card-mitos fade-in">
+                <div class="card-header">
+                    <i class="fas fa-sun card-icon"></i>
                 </div>
-            </section>
-
-            <!-- ======================================== -->
-            <!-- SECCIÓN DE VIDEOS DE YOUTUBE -->
-            <!-- ======================================== -->
-            <section class="videos-section" id="videos">
-                <h2 class="section-title">Videos Destacados</h2>
+                <div class="card-body">
+                    <h3 class="card-title">Mitología Azteca</h3>
+                    <p class="card-text">
+                        Sumérgete en el mundo de Quetzalcóatl, Huitzilopochtli y los cinco soles. Cosmogonía mesoamericana llena de simbolismo y poder.
+                    </p>
+                    <a href="#" class="card-link">
+                        Explorar mitos <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         SECCIÓN DE LEYENDAS
+         Tarjetas con contenido sobre leyendas
+    ============================================ -->
+    <section class="main-content" id="leyendas">
+        <div class="section-header fade-in">
+            <h2 class="section-title"><i class="fas fa-tree"></i> Leyendas</h2>
+            <p class="section-description">
+                Adéntrate en relatos transmitidos de generación en generación. Las leyendas mezclan realidad y fantasía, conectando lugares reales con acontecimientos extraordinarios.
+            </p>
+        </div>
+        
+        <div class="cards-container">
+            <!-- Tarjeta 1: Leyendas Urbanas -->
+            <article class="card card-leyendas fade-in">
+                <div class="card-header">
+                    <i class="fas fa-city card-icon"></i>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Leyendas Urbanas</h3>
+                    <p class="card-text">
+                        Historias contemporáneas que han surgido en la era moderna. De lo inquietante a lo inexplicable, estas narrativas siguen evolucionando en internet.
+                    </p>
+                    <a href="#" class="card-link">
+                        Explorar leyendas <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <!-- Tarjeta 2: Leyendas Medievales -->
+            <article class="card card-leyendas fade-in">
+                <div class="card-header">
+                    <i class="fas fa-chess-rook card-icon"></i>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Leyendas Medievales</h3>
+                    <p class="card-text">
+                        El Rey Arturo, Excalibur y los Caballeros de la Mesa Redonda. Dragones, magos y héroes en búsquedas épicas por el honor y la gloria.
+                    </p>
+                    <a href="#" class="card-link">
+                        Explorar leyendas <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <!-- Tarjeta 3: Leyendas Latinoamericanas -->
+            <article class="card card-leyendas fade-in">
+                <div class="card-header">
+                    <i class="fas fa-moon card-icon"></i>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Leyendas Latinoamericanas</h3>
+                    <p class="card-text">
+                        La Llorona, El Sombrerón, El Chupacabras y más. Relatos que han aterrorizado y fascinado a generaciones en América Latina.
+                    </p>
+                    <a href="#" class="card-link">
+                        Explorar leyendas <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         SECCIÓN DE FÁBULAS
+         Tarjetas con contenido sobre fábulas
+    ============================================ -->
+    <section class="main-content" id="fabulas">
+        <div class="section-header fade-in">
+            <h2 class="section-title"><i class="fas fa-feather"></i> Fábulas</h2>
+            <p class="section-description">
+                Relatos breves con moraleja que utilizan animales personificados para enseñar lecciones valiosas. Sabiduría atemporal en historias memorables.
+            </p>
+        </div>
+        
+        <div class="cards-container">
+            <!-- Tarjeta 1: Fábulas de Esopo -->
+            <article class="card card-fabulas fade-in">
+                <div class="card-header">
+                    <i class="fas fa-crow card-icon"></i>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Fábulas de Esopo</h3>
+                    <p class="card-text">
+                        Las historias clásicas que han educado a la humanidad durante milenios. "La liebre y la tortuga", "El león y el ratón" y muchas más.
+                    </p>
+                    <a href="#" class="card-link">
+                        Explorar fábulas <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <!-- Tarjeta 2: Fábulas de La Fontaine -->
+            <article class="card card-fabulas fade-in">
+                <div class="card-header">
+                    <i class="fas fa-dove card-icon"></i>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Fábulas de La Fontaine</h3>
+                    <p class="card-text">
+                        Adaptaciones francesas elegantes y sofisticadas. Lecciones de vida presentadas con ingenio literario y profundidad psicológica.
+                    </p>
+                    <a href="#" class="card-link">
+                        Explorar fábulas <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <!-- Tarjeta 3: Fábulas Orientales -->
+            <article class="card card-fabulas fade-in">
+                <div class="card-header">
+                    <i class="fas fa-yin-yang card-icon"></i>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Fábulas Orientales</h3>
+                    <p class="card-text">
+                        Sabiduría ancestral de China, Japón e India. Historias zen, parábolas budistas y cuentos taoístas llenos de iluminación.
+                    </p>
+                    <a href="#" class="card-link">
+                        Explorar fábulas <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         SECCIÓN DE CARACTERÍSTICAS
+         Beneficios del sitio SANPIKU
+    ============================================ -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">¿Por qué SANPIKU?</h2>
                 <p class="section-description">
-                    Explora contenido audiovisual relacionado con historias, mitos y leyendas
+                    Tu destino definitivo para explorar narrativas épicas de todas las culturas del mundo
                 </p>
-                
-                <!-- Grid de videos -->
-                <div class="videos-grid">
-                    
-                    <!-- VIDEO 1 - Ejemplo (Reemplaza con tu propio video) -->
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <!-- IMPORTANTE: Reemplaza el src con tu video de YouTube -->
-                            <!-- Para obtener el código: YouTube → Video → Compartir → Insertar → Copiar código -->
-                            <iframe 
-                                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                                title="Video de ejemplo" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen>
-                            </iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">Leyendas y Mitos Antiguos</h3>
-                            <p class="video-description">
-                                Un recorrido por las historias más fascinantes de la historia
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- VIDEO 2 - Espacio para agregar más videos -->
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <!-- Agrega aquí tu segundo video -->
-                            <iframe 
-                                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                                title="Video de ejemplo 2" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen>
-                            </iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">Historias del Folclore Mundial</h3>
-                            <p class="video-description">
-                                Descubre las tradiciones orales de diferentes culturas
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Nota informativa sobre cómo agregar videos -->
-                <div class="info-box">
-                    <i class="fas fa-info-circle"></i>
-                    <p>
-                        <strong>¿Quieres agregar más videos?</strong> 
-                        Lee el archivo README.md en la carpeta youtu-sanpk/ para aprender 
-                        cómo agregar nuevos videos de YouTube al sitio.
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-item fade-in">
+                    <i class="fas fa-globe-americas feature-icon"></i>
+                    <h3 class="feature-title">Contenido Global</h3>
+                    <p class="feature-text">
+                        Historias recopiladas de todos los rincones de internet y culturas del mundo entero.
                     </p>
                 </div>
-            </section>
-
-        </main>
-
-    </div>
-
-    <!-- ============================================ -->
-    <!-- PIE DE PÁGINA (FOOTER) -->
-    <!-- ============================================ -->
+                
+                <div class="feature-item fade-in">
+                    <i class="fas fa-book-reader feature-icon"></i>
+                    <h3 class="feature-title">Fácil Lectura</h3>
+                    <p class="feature-text">
+                        Diseño optimizado para disfrutar de largas sesiones de lectura sin fatiga visual.
+                    </p>
+                </div>
+                
+                <div class="feature-item fade-in">
+                    <i class="fas fa-history feature-icon"></i>
+                    <h3 class="feature-title">Actualizaciones Constantes</h3>
+                    <p class="feature-text">
+                        Nuevas historias y descubrimientos añadidos regularmente a nuestra colección.
+                    </p>
+                </div>
+                
+                <div class="feature-item fade-in">
+                    <i class="fas fa-users feature-icon"></i>
+                    <h3 class="feature-title">Comunidad Activa</h3>
+                    <p class="feature-text">
+                        Únete a miles de exploradores que comparten su pasión por las historias épicas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         FOOTER (PIE DE PÁGINA)
+         Información de contacto y enlaces
+    ============================================ -->
     <footer class="footer" id="contacto">
         <div class="footer-content">
-            
-            <!-- Columna 1: Información del proyecto -->
-            <div class="footer-column">
-                <h3 class="footer-title">
-                    <i class="fas fa-book-open"></i>
-                    Sanpiku
-                </h3>
-                <p class="footer-text">
-                    Tu fuente de historias, leyendas y mitos fascinantes. 
-                    Descubre el patrimonio cultural de la humanidad.
+            <!-- Sección Sobre Nosotros -->
+            <div class="footer-section">
+                <h3><i class="fas fa-info-circle"></i> Sobre SANPIKU</h3>
+                <p>
+                    Portal dedicado a la divulgación y entretenimiento a través de mitos, leyendas y fábulas recopiladas de todo internet. Nuestra misión es preservar y compartir el patrimonio narrativo de la humanidad.
                 </p>
+                <div class="social-links">
+                    <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
             </div>
-
-            <!-- Columna 2: Enlaces rápidos -->
-            <div class="footer-column">
-                <h3 class="footer-title">Enlaces Rápidos</h3>
+            
+            <!-- Sección Enlaces Rápidos -->
+            <div class="footer-section">
+                <h3><i class="fas fa-link"></i> Enlaces Rápidos</h3>
                 <ul class="footer-links">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#historias">Historias</a></li>
-                    <li><a href="#videos">Videos</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#inicio"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                    <li><a href="#mitos"><i class="fas fa-chevron-right"></i> Mitos</a></li>
+                    <li><a href="#leyendas"><i class="fas fa-chevron-right"></i> Leyendas</a></li>
+                    <li><a href="#fabulas"><i class="fas fa-chevron-right"></i> Fábulas</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li>
                 </ul>
             </div>
-
-            <!-- Columna 3: Redes sociales -->
-            <div class="footer-column">
-                <h3 class="footer-title">Síguenos</h3>
-                <div class="social-links">
-                    <a href="#" class="social-link" aria-label="Facebook">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    <a href="#" class="social-link" aria-label="Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="social-link" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="social-link" aria-label="YouTube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-                <p class="footer-text" style="margin-top: 1rem;">
-                    <i class="fas fa-envelope"></i>
-                    contacto@sanpiku.com
-                </p>
+            
+            <!-- Sección Contacto -->
+            <div class="footer-section">
+                <h3><i class="fas fa-envelope"></i> Contacto</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-map-marker-alt"></i> Internet, Mundo Digital</li>
+                    <li><i class="fas fa-envelope"></i> info@sanpiku.com</li>
+                    <li><i class="fas fa-phone"></i> +00 000 000 0000</li>
+                </ul>
             </div>
-
+            
+            <!-- Sección Newsletter -->
+            <div class="footer-section">
+                <h3><i class="fas fa-paper-plane"></i> Newsletter</h3>
+                <p>
+                    Suscríbete para recibir nuevas historias y descubrimientos directamente en tu correo.
+                </p>
+                <a href="#" class="cta-button" style="margin-top: 1rem; display: inline-block;">
+                    Suscribirse
+                </a>
+            </div>
         </div>
-
-        <!-- Barra inferior de copyright -->
+        
         <div class="footer-bottom">
-            <p>&copy; 2024 Sanpiku - Historias y Leyendas. Todos los derechos reservados.</p>
+            <p>
+                &copy; 2026 SANPIKU - Portal de Mitos, Leyendas y Fábulas. Contenido recopilado de diversas fuentes de internet. 
+                Hecho con <i class="fas fa-heart" style="color: var(--naranja-intenso);"></i> para exploradores de historias.
+            </p>
         </div>
     </footer>
+    
+    <!-- ============================================
+         JAVASCRIPT
+         Código para interacciones y animaciones
+    ============================================ -->
+    <script>
+        // ============================================
+        // MENÚ MÓVIL
+        // Abrir/cerrar menú hamburguesa
+        // ============================================
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            // Cambiar icono entre hamburguesa y X
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+        
+        // ============================================
+        // NAVEGACIÓN SUAVE
+        // Scroll suave al hacer clic en enlaces
+        // ============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80; // Espacio para el navbar fijo
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // ============================================
+        // NAVBAR AL HACER SCROLL
+        // Cambiar estilo cuando se hace scroll
+        // ============================================
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // ============================================
+        // ANIMACIONES AL HACER SCROLL
+        // Mostrar elementos cuando entran en el viewport
+        // ============================================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        // Observar todos los elementos con clase fade-in
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+        
+        // ============================================
+        // SCROLL INDICATOR
+        // Animar el indicador de scroll
+        // ============================================
+        const scrollIndicator = document.querySelector('.scroll-indicator');
+        if (scrollIndicator) {
+            scrollIndicator.addEventListener('click', () => {
+                window.scrollTo({
+                    top: window.innerHeight,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Ocultar el indicador cuando se hace scroll
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 200) {
+                    scrollIndicator.style.opacity = '0';
+                } else {
+                    scrollIndicator.style.opacity = '1';
+                }
+            });
+        }
+        
+        // ============================================
+        // EFECTO PARALLAX EN HERO
+        // Movimiento sutil en los iconos flotantes
+        // ============================================
+        const heroIcons = document.querySelectorAll('.hero-icon');
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            heroIcons.forEach((icon, index) => {
+                const speed = 0.5 + (index * 0.1);
+                icon.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.05}deg)`;
+            });
+        });
+        
+        // ============================================
+        // CARGA INICIAL
+        // Animaciones al cargar la página
+        // ============================================
+        window.addEventListener('load', () => {
+            // Agregar clase visible a elementos iniciales
+            document.querySelectorAll('.hero-content').forEach(el => {
+                el.style.opacity = '1';
+            });
+        });
+        
+        // ============================================
+        // EFECTO HOVER EN CARDS
+        // Efecto 3D al mover el mouse sobre las tarjetas
+        // ============================================
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-15px) scale(1.02)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
+            });
+        });
+        
+        // ============================================
+        // CONSOLE MESSAGE
+        // Mensaje especial en la consola del navegador
+        // ============================================
+        console.log('%c🗺️ ¡Bienvenido a SANPIKU! 🗺️', 'font-size: 20px; color: #ff6b35; font-weight: bold;');
+        console.log('%c¿Te gusta explorar? ¡Este sitio está lleno de historias épicas!', 'font-size: 14px; color: #3a7d44;');
+        console.log('%cSitio creado con ❤️ para amantes de mitos, leyendas y fábulas', 'font-size: 12px; color: #2563eb;');
+    </script>
+    
 
-    <!-- ============================================ -->
-    <!-- ENLACE AL ARCHIVO JAVASCRIPT -->
-    <!-- ============================================ -->
-    <script src="js/script.js"></script>
+      <script>
+        const createFloatingBall = ()=>{let a=document.createElement("style");a.textContent=`
+          .fellou-floating-ball {
+              position: fixed;
+              bottom: 20px;
+              right: 20px;
+              background: #fff;
+              border-radius: 50%;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+              display: flex;
+              gap: 8px;
+              flex-direction: row;
+              align-items: center;
+              justify-content: center;
+              cursor: pointer;
+              transition: all 0.15s ease;
+              z-index: 100000;
+              width: 28px;
+              height: 28px;
+              text-align: center;
+              border: 2px solid #f4f4f4;
+          }
 
-</body>
+          .fellou-floating-ball:hover {
+              width: 140px;
+              border-radius: 99px;
+          }
+
+          .fellou-floating-ball svg {
+              width: 16px;
+              height: 16px;
+          }
+
+          .fellou-floating-ball-text {
+              display: none;
+              width: 0px;
+              transition: width 0.3s ease;
+              color: #595561;
+              font-size: 12px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 20px;
+              white-space: nowrap;
+              overflow: hidden;
+           
+          }
+
+          .fellou-floating-ball:hover .fellou-floating-ball-text {
+              display: block;
+              width: 100px;
+          }
+      `,document.head.appendChild(a);let b=document.createElement("div");b.className="fellou-floating-ball",b.addEventListener("click",()=>{window.open("https://fellou.ai","_blank")}),b.innerHTML=`
+          <svg width="16" height="16" viewBox="0 0 152 152" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path opacity="0.72" d="M108.71 15.909C133.671 36.8541 134.337 77.1554 110.197 105.924C86.0565 134.694 46.2518 141.036 21.2904 120.091C-3.67096 99.1459 -4.33674 58.8446 19.8034 30.0755C43.9435 1.30644 83.7482 -5.03614 108.71 15.909ZM102.282 23.5694C81.8118 6.39315 48.2407 11.7425 27.4638 36.5034C6.68694 61.2643 7.24845 95.2543 27.7183 112.431C48.1882 129.607 81.7593 124.258 102.536 99.4966C123.313 74.7357 122.752 40.7457 102.282 23.5694Z" fill="url(#paint0_linear_34_1408)"/>
+              <path d="M116.986 29.3811C141.525 49.9712 143.286 88.2698 120.921 114.924C98.5561 141.577 60.5333 146.493 35.995 125.903C11.4567 105.313 9.69493 67.0139 32.06 40.3602C54.4252 13.7065 92.4479 8.79095 116.986 29.3811ZM110.558 37.0415C90.3987 20.1255 58.6488 24.2301 39.7205 46.788C20.7921 69.346 22.2632 101.326 42.4229 118.242C62.5825 135.158 94.3324 131.054 113.261 108.496C132.189 85.9377 130.718 53.9574 110.558 37.0415Z" fill="url(#paint1_linear_34_1408)"/>
+              <path d="M131.544 35.0694C155.71 55.3471 155.731 95.1074 131.591 123.876C107.451 152.646 68.291 159.529 44.1249 139.251C19.9589 118.974 19.9379 79.2135 44.078 50.4444C68.2182 21.6753 107.378 14.7917 131.544 35.0694ZM125.116 42.7299C105.505 26.2745 72.5526 32.067 51.7385 56.8723C30.9244 81.6776 30.9421 115.136 50.5528 131.591C70.1636 148.046 103.116 142.254 123.931 117.449C144.745 92.6433 144.727 59.1852 125.116 42.7299Z" fill="url(#paint2_linear_34_1408)"/>
+              <defs>
+                  <linearGradient id="paint0_linear_34_1408" x1="108.71" y1="15.909" x2="21.2904" y2="120.091" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#6401F8" stop-opacity="0.7"/>
+                      <stop offset="0.465" stop-color="#FF9000" stop-opacity="0.42"/>
+                      <stop offset="1" stop-color="#33B3FF" stop-opacity="0.2"/>
+                  </linearGradient>
+                  <linearGradient id="paint1_linear_34_1408" x1="116.986" y1="29.381" x2="35.995" y2="125.903" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#6401F8" stop-opacity="0.7"/>
+                      <stop offset="0.465" stop-color="#FF9000" stop-opacity="0.42"/>
+                      <stop offset="1" stop-color="#33B3FF" stop-opacity="0.2"/>
+                  </linearGradient>
+                  <linearGradient id="paint2_linear_34_1408" x1="131.544" y1="35.0694" x2="44.1249" y2="139.251" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#6401F8"/>
+                      <stop offset="0.5" stop-color="#FF9000"/>
+                      <stop offset="1" stop-color="#33B3FF"/>
+                  </linearGradient>
+              </defs>
+          </svg>
+      `;let c=document.createElement("div");c.className="fellou-floating-ball-text",c.textContent="powered by fellou",b.appendChild(c),document.body.appendChild(b)};
+        // Call createFloatingBall when the page loads
+        window.addEventListener('load', createFloatingBall);
+      </script>
+    </body>
 </html>
