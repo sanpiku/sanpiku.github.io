@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Relatos | sanPiku</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="container">
+
+        <a href="index.html" class="logo">
+            <span>sanPiku</span>
+        </a>
+
+        <nav id="menu" class="menu">
+
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="relatos.html" class="activo">Relatos</a></li>
+                <li><a href="fabulas.html">Fábulas</a></li>
+                <li><a href="multimedia.html">Audiocuentos</a></li>
+                <li><a href="comentarios.html">Comentarios</a></li>
+            </ul>
+
+        </nav>
+
+    </div>
+
+</header>
+
+<main>
+
+<section class="section">
+
+    <div class="container">
+
+        <h1>Relatos</h1>
+        <p>Historias breves que aparecen automáticamente en esta página.</p>
+
+    </div>
+
+</section>
+
+<section class="section fondo-suave">
+
+    <div class="container">
+
+        <!-- AQUÍ SE GENERA TODO -->
+        <div id="lista-relatos" class="cards"></div>
+
+    </div>
+
+</section>
+
+</main>
+
+<script src="js/relatos.js"></script>
+<script src="js/script.js"></script>
+
+<script>
+/* GENERADOR AUTOMÁTICO */
+const contenedor = document.getElementById("lista-relatos");
+
+relatos.forEach(r => {
+
+    const card = document.createElement("article");
+    card.className = "card";
+
+    card.innerHTML = `
+        <h3>${r.titulo}</h3>
+        <p>${r.resumen}</p>
+        <a href="${r.url}" class="btn btn-secundario">Leer</a>
+    `;
+
+    contenedor.appendChild(card);
+
+});
+</script>
+
+</body>
+
+</html>

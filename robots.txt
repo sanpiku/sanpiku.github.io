@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://llylly.github.io/sanPiku/sitemap.xml

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audiocuentos | sanPiku</title>
+    <meta name="description" content="Audiocuentos narrados de sanPiku en formato vídeo.">
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <a href="index.html" class="logo">
+            <img src="img/logo.svg" alt="sanPiku">
+            <span>sanPiku</span>
+        </a>
+        <button id="menu-btn" class="menu-btn" aria-label="Abrir menú" aria-expanded="false">
+            ☰
+        </button>
+        <nav id="menu" class="menu">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="relatos.html">Relatos</a></li>
+                <li><a href="fabulas.html">Fábulas</a></li>
+                <li><a href="multimedia.html" class="activo">Audiocuentos</a></li>
+                <li><a href="comentarios.html">Comentarios</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main>
+<section class="section">
+    <div class="container">
+        <h1>Audiocuentos</h1>
+        <p>
+            Aquí encontrarás relatos narrados en vídeo para escuchar sanPiku de otra forma: sin prisa, como si te contaran una historia.
+        </p>
+    </div>
+</section>
+<section class="section fondo-suave">
+    <div class="container">
+        <div class="cards">
+            <!-- VIDEO 1 -->
+            <article class="card">
+                <h3>El banco del parque</h3>
+                <p>Versión narrada del relato.</p>
+                <div class="video">
+                    <iframe
+                        src="https://www.youtube.com/embed/VIDEO_ID"
+                        title="Audiocuento sanPiku"
+                        frameborder="0"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+</main>
+<footer>
+    <div class="container footer">
+        <div>
+            <h3>sanPiku</h3>
+            <p>Relatos y fábulas para leer con calma.</p>
+        </div>
+    </div>
+    <div class="copyright">
+        © 2026 sanPiku
+    </div>
+</footer>
+<script src="js/script.js"></script>
+</body>
+</html>
